@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Anuwat Pengput | Academic Portfolio & CV</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        brand: {
+                            slate: '#0f172a',
+                            teal: '#0d9488',
+                            indigo: '#4f46e5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200 antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-header bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Name -->
+                <a href="#" class="flex items-center gap-2 font-bold text-lg text-slate-900 dark:text-white tracking-tight hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                    <span class="w-8 h-8 rounded-lg bg-sky-600 text-white flex items-center justify-center font-black text-sm shadow-sm">AP</span>
+                    <span>Anuwat Pengput<span class="text-xs text-sky-600 dark:text-sky-400 font-normal ml-1.5 hidden sm:inline-block">PhD, MSc, MPH</span></span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#about" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">About</a>
+                    <a href="#education" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Education & Experience</a>
+                    <a href="#publications" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Publications</a>
+                    <a href="#teaching" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Teaching</a>
+                    <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Skills & Certs</a>
+                    <a href="#service" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Service</a>
+                </nav>
+
+                <!-- Actions / Controls -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- GitHub Pages Deployment Guide Button -->
+                    <button onclick="toggleModal('githubModal')" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-all">
+                        <i class="fa-brands font-semibold text-slate-900 dark:text-white fa-github"></i>
+                        <span class="hidden lg:inline">Deploy to GitHub Pages</span>
+                    </button>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="themeToggle" aria-label="Toggle Theme" class="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuBtn" aria-label="Open Mobile Menu" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <a href="#about" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#education" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Education & Experience</a>
+            <a href="#publications" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Publications</a>
+            <a href="#teaching" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Teaching & Mentoring</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Skills & Certifications</a>
+            <a href="#service" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Service & Awards</a>
+        </div>
+    </header>
+
+    <!-- Hero / Profile Banner -->
+    <section id="about" class="py-12 md:py-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Left Details -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/50 text-sky-700 dark:text-sky-300 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                        Lecturer & Chief, Curriculum & Instruction Division
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Dr. Anuwat Pengput
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                        Specializing in <span class="font-semibold text-slate-900 dark:text-white">Biomedical Informatics</span>, <span class="font-semibold text-slate-900 dark:text-white">Biomedical Ontologies</span>, <span class="font-semibold text-slate-900 dark:text-white">Public Health Epidemiology</span>, and <span class="font-semibold text-slate-900 dark:text-white">Biostatistics</span>. Dedicated to integrating health data systems, ontology engineering, and observational studies for disease prediction and primary health care advancement.
+                    </p>
+
+                    <!-- Affiliations Brief -->
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 space-y-1">
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-building-columns text-sky-600 dark:text-sky-400"></i>
+                            Sirindhorn College of Public Health Khon Kaen, Praboromarajchanok Institute
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-graduation-cap text-sky-600 dark:text-sky-400"></i>
+                            Ph.D. Biomedical Informatics, University at Buffalo, SUNY, USA
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-sky-600 dark:text-sky-400"></i>
+                            90/1 Anamai Rd, Nai Mueang, Mueang Khon Kaen District, Khon Kaen 40000, Thailand
+                        </p>
+                    </div>
+
+                    <!-- Contact & Social Action Badges -->
+                    <div class="pt-2 flex flex-wrap items-center gap-3">
+                        <a href="mailto:anuwat@scphkk.ac.th" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-medium text-sm transition-all shadow-sm">
+                            <i class="fa-solid fa-envelope"></i>
+                            Email Me
+                        </a>
+                        <button onclick="copyToClipboard('anuwat@scphkk.ac.th', 'Email copied!')" class="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition-colors" title="Copy Email">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                        
+                        <!-- Profile External Links -->
+                        <div class="flex items-center gap-2 pl-2 border-l border-slate-300 dark:border-slate-700">
+                            <a href="https://scholar.google.com" target="_blank" rel="noopener" class="p-2 text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" title="Google Scholar">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="p-2 text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" title="GitHub Profile">
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="p-2 text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" title="LinkedIn">
+                                <i class="fa-brands fa-linkedin text-lg"></i>
+                            </a>
+                            <a href="https://researchgate.net" target="_blank" rel="noopener" class="p-2 text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" title="ResearchGate">
+                                <i class="fa-brands fa-researchgate text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Quick Stats Grid -->
+                <div class="lg:col-span-4 grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm text-center">
+                        <div class="text-3xl font-extrabold text-sky-600 dark:text-sky-400 mb-1">15+</div>
+                        <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Publications</div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm text-center">
+                        <div class="text-3xl font-extrabold text-sky-600 dark:text-sky-400 mb-1">15+</div>
+                        <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Years Exp.</div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm text-center">
+                        <div class="text-3xl font-extrabold text-sky-600 dark:text-sky-400 mb-1">Ph.D.</div>
+                        <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">UB SUNY (2024)</div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm text-center">
+                        <div class="text-3xl font-extrabold text-sky-600 dark:text-sky-400 mb-1">Sigma Xi</div>
+                        <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Full Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Work Experience Section -->
+    <section id="education" class="py-16 border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">Background</h2>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Education & Work Experience</h3>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education Timeline -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+                        <i class="fa-solid fa-graduation-cap text-xl text-sky-600 dark:text-sky-400"></i>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Education</h4>
+                    </div>
+
+                    <div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
+                        <!-- Ph.D. -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-sky-600 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">June 2024</span>
+                                <h5 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Ph.D. in Biomedical Informatics (Biomedical Ontology)</h5>
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">University at Buffalo, State University of New York, USA</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Department of Biomedical Informatics, Jacobs School of Medicine and Biomedical Sciences</p>
+                                <div class="mt-3 p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg text-xs text-slate-600 dark:text-slate-300">
+                                    <span class="font-semibold text-slate-800 dark:text-slate-200">Dissertation:</span> Development and Use of Cholangiocarcinoma Ontology for Analysis of Risk Factors in a Research Cohort in Thailand.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- M.S. -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">June 2020</span>
+                                <h5 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">M.S. in Biomedical Informatics (Public Health Informatics)</h5>
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">University at Buffalo, State University of New York, USA</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Master Project: Spatial Epidemiological Analysis and Geographical Information System of Opioid Overdoses in New York State</p>
+                            </div>
+                        </div>
+
+                        <!-- M.P.H. -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">April 2016</span>
+                                <h5 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Master of Public Health (Biostatistics)</h5>
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Khon Kaen University, Thailand</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Thesis: Quality of Published Randomized Controlled Trials (RCTs) in Thai Healthcare Journals</p>
+                            </div>
+                        </div>
+
+                        <!-- B.P.H. & Diploma -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-2">
+                                <div>
+                                    <span class="text-xs font-bold text-sky-600 dark:text-sky-400">August 2011</span>
+                                    <h5 class="text-base font-bold text-slate-900 dark:text-white">Bachelor of Public Health</h5>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">Khon Kaen University, Thailand</p>
+                                </div>
+                                <div class="pt-2 border-t border-slate-100 dark:border-slate-700">
+                                    <span class="text-xs font-bold text-sky-600 dark:text-sky-400">March 2009</span>
+                                    <h5 class="text-base font-bold text-slate-900 dark:text-white">Diploma of Public Health (Community Public Health)</h5>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">Sirindhorn College of Public Health, Khon Kaen, Thailand</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Timeline -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+                        <i class="fa-solid fa-briefcase text-xl text-sky-600 dark:text-sky-400"></i>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Work Experience</h4>
+                    </div>
+
+                    <div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
+                        <!-- Current Position -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">October 2023 - Present</span>
+                                <h5 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Lecturer & Chief, Curriculum & Instruction Division</h5>
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Department of Community Public Health, Sirindhorn College of Public Health, Khon Kaen</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Praboromarajchanok Institute, Ministry of Public Health, Thailand</p>
+                            </div>
+                        </div>
+
+                        <!-- Huaimek District -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">April 2017 - October 2023</span>
+                                <h5 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Public Health Technical Officer</h5>
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Huaimek District Public Health Office, Kalasin, Thailand</p>
+                                <ul class="mt-2 text-xs text-slate-600 dark:text-slate-400 list-disc list-inside space-y-1">
+                                    <li>Research project development & management</li>
+                                    <li>Public health policy, strategy, and administration</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Songpluaey Sub-District -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">April 2009 - April 2017</span>
+                                <h5 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Public Health Officer / Technical Officer</h5>
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Songpluaey Sub-District Health Promotion Hospital, Kalasin</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Epidemiology, health promotion, disease control, health IT administrator, basic clinical services.</p>
+                            </div>
+                        </div>
+
+                        <!-- UB Campus Dining -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">July 2021 - May 2023</span>
+                                <h5 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Food Services</h5>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">University at Buffalo Campus Dining and Shops, NY, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-16 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">Scholarly Work</h2>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Publications & Presentations</h3>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full md:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" id="pubSearch" placeholder="Search keywords, authors..." class="w-full pl-9 pr-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap items-center gap-2 mb-8 border-b border-slate-200 dark:border-slate-800 pb-4 text-xs font-medium">
+                <button onclick="filterPubs('all')" class="pub-tab-btn px-4 py-2 rounded-lg bg-sky-600 text-white font-semibold transition-colors" data-filter="all">All Items</button>
+                <button onclick="filterPubs('journals')" class="pub-tab-btn px-4 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" data-filter="journals">Peer-reviewed Journals</button>
+                <button onclick="filterPubs('conferences')" class="pub-tab-btn px-4 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" data-filter="conferences">Conference Proceedings</button>
+                <button onclick="filterPubs('presentations')" class="pub-tab-btn px-4 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" data-filter="presentations">Scientific Presentations</button>
+                <button onclick="filterPubs('projects')" class="pub-tab-btn px-4 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" data-filter="projects">Research Projects</button>
+            </div>
+
+            <!-- Publications Container -->
+            <div id="pubsContainer" class="space-y-4">
+
+                <!-- Article 1 -->
+                <div class="pub-item journals bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">Journal Article (2026)</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                                Ontology development and use for cholangiocarcinoma risk factors and predictions: a term enrichment data analysis and machine learning classification.
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                <span class="font-semibold text-slate-900 dark:text-slate-100">Pengput, A.</span>, Diehl, A.
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                                J Biomed Semant 17, 2 (2026).
+                            </p>
+                        </div>
+                        <a href="https://doi.org/10.1186/s13326-025-00345-2" target="_blank" rel="noopener" class="p-2 text-sky-600 hover:text-sky-700 text-sm flex-shrink-0" title="Open DOI Link">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="pub-item journals bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">Journal Article (2023)</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                                Quality of Reporting of Randomized Controlled Trials of Top 10 Herbs Prescribed in Thailand.
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                <span class="font-semibold text-slate-900 dark:text-slate-100">Pengput, A.</span>, Sucharit, C., Nopsopon, T., Sungthong, B., Pongpirul, K.
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                                Journal of Herbal Medicine. Vol 41, Sept 2023, 100739.
+                            </p>
+                        </div>
+                        <a href="https://doi.org/10.1016/j.hermed.2023.100739" target="_blank" rel="noopener" class="p-2 text-sky-600 hover:text-sky-700 text-sm flex-shrink-0">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="pub-item journals bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">Journal Article (2022)</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                                Telemedicine in Southeast Asia: A Systematic Review.
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                <span class="font-semibold text-slate-900 dark:text-slate-100">Pengput, A.</span>, and Schwartz G., D.
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                                Telemedicine and e-Health. Dec;28(12):1711-1733.
+                            </p>
+                        </div>
+                        <a href="https://doi.org/10.1089/tmj.2021.0516" target="_blank" rel="noopener" class="p-2 text-sky-600 hover:text-sky-700 text-sm flex-shrink-0">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="pub-item journals bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">Journal Article (2020)</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                                Risk Factors for Opisthorchis Viverrini Infection: A Systematic Review.
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                <span class="font-semibold text-slate-900 dark:text-slate-100">Pengput, A.</span>, and Schwartz G., D.
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                                Journal of Infection and Public Health. 13(9):1265-1273.
+                            </p>
+                        </div>
+                        <a href="https://doi.org/10.1016/j.jiph.2020.05.028" target="_blank" rel="noopener" class="p-2 text-sky-600 hover:text-sky-700 text-sm flex-shrink-0">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Conference 1 -->
+                <div class="pub-item conferences bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-800 dark:bg-purple-950/70 dark:text-purple-300">Conference Proceeding (2024)</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                                Setting the Scene to Link SNOMED CT to Realism-Based Ontologies.
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                <span class="font-semibold text-slate-900 dark:text-slate-100">Pengput, A.</span>, & Ceusters, W.
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                                Proceedings of the 19th World Congress on Medical and Health Informatics (MedInfo 2023), Sydney, Australia.
+                            </p>
+                        </div>
+                        <a href="https://doi.org/10.3233/SHTI230932" target="_blank" rel="noopener" class="p-2 text-sky-600 hover:text-sky-700 text-sm flex-shrink-0">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Conference 2 -->
+                <div class="pub-item conferences bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-800 dark:bg-purple-950/70 dark:text-purple-300">Conference Proceeding (2023)</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                                Axiomatizing SNOMED CT Disorders: Should There Be Room for Interpretation?
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                Ceusters, W., & <span class="font-semibold text-slate-900 dark:text-slate-100">Pengput, A.</span>
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                                Formal Ontology in Information Systems (FOIS), Sherbrooke, Canada.
+                            </p>
+                        </div>
+                        <a href="https://doi.org/10.3233/FAIA231124" target="_blank" rel="noopener" class="p-2 text-sky-600 hover:text-sky-700 text-sm flex-shrink-0">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Presentation 1 -->
+                <div class="pub-item presentations bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300">Scientific Presentation (2025)</span>
+                        </div>
+                        <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                            Biomedical Ontology for Cholangiocarcinoma Risk Factors and Predictions.
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                            Invited Speaker - Asian Neglected Tropical Diseases Conference (NTDASIA2025), Faculty of Medicine, Khon Kaen University.
+                        </p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                            November 28, 2025 | Pullman Khon Kaen Hotel, Thailand
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 1 -->
+                <div class="pub-item projects bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm transition-all hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-800 dark:bg-sky-950/70 dark:text-sky-300">Research Project</span>
+                        </div>
+                        <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                            Spatial Epidemiological Analysis and Prediction of Opioid-Related Deaths in New York State.
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                            Interactive Web GIS Project Repository: 
+                            <a href="https://geo511-2019.github.io/2019-geo511-project-anuwatpe/" target="_blank" rel="noopener" class="text-sky-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1 ml-1">
+                                GitHub Page <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching & Mentoring Section -->
+    <section id="teaching" class="py-16 border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">Education & Pedagogy</h2>
+                <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Teaching & Student Mentoring</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Courses Left -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-4">
+                            <i class="fa-solid fa-book-open text-sky-600 dark:text-sky-400"></i>
+                            Undergraduate & Graduate Courses
+                        </h4>
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white">Computer in Community Health</div>
+                                    <div class="text-slate-500 text-xs">Course Director (2024-Present)</div>
+                                </div>
+                                <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 font-medium rounded text-[11px]">Undergraduate</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white">Innovation & Digital Tech in Primary Care</div>
+                                    <div class="text-slate-500 text-xs">Core Faculty (2025-Present)</div>
+                                </div>
+                                <span class="px-2 py-1 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-medium rounded text-[11px]">Graduate</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white">Biostatistics & Digital Literacy</div>
+                                    <div class="text-slate-500 text-xs">Core Faculty (2024-Present)</div>
+                                </div>
+                                <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 font-medium rounded text-[11px]">Undergraduate</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white">Public Health Research I & II</div>
+                                    <div class="text-slate-500 text-xs">Core Faculty (2024-Present)</div>
+                                </div>
+                                <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 font-medium rounded text-[11px]">Undergraduate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentoring Right -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-4">
+                            <i class="fa-solid fa-users text-sky-600 dark:text-sky-400"></i>
+                            Student Mentoring Highlights
+                        </h4>
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg border-l-4 border-amber-500">
+                                <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">Award Winning Research (2025)</span>
+                                <p class="font-bold text-slate-900 dark:text-white mt-1">Factors Associated with the Consumption of Dietary Supplements for Weight Loss in Thailand</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Mentored Kittithat Ouanin & Kannika Pimon | <span class="font-semibold text-emerald-600 dark:text-emerald-400">1st Place Poster Award (PHAS 2025)</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                                <p class="font-bold text-slate-900 dark:text-white">Implications of Using Free Mobile Messaging Applications for Clinical Communication</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Mentored Thida Singkham & Settha Worajit (2025)</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                                <p class="font-bold text-slate-900 dark:text-white">Factors Affecting Blood Organophosphate & Carbamate Residues in Farmers</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Mentored Kittiphatsorn Suwannasri & Oamporn Matnok (2025)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Certifications Section -->
+    <section id="skills" class="py-16 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">Technical Stack</h2>
+                <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Skills & Certifications</h3>
+            </div>
+
+            <!-- Skills Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="text-sky-600 dark:text-sky-400 text-lg font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-code"></i> Programming
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">R</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">Python</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">SQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">Prolog</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">SPARQL</span>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="text-sky-600 dark:text-sky-400 text-lg font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line"></i> Statistics & Software
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">SAS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">STATA</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">SPSS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">Minitab</span>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="text-sky-600 dark:text-sky-400 text-lg font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-sitemap"></i> Ontologies & Reviews
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">Protégé</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">SNOMED CT</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">RevMAN</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">Covidence</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">Rayyan</span>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="text-sky-600 dark:text-sky-400 text-lg font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> GIS & Informatics
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">QGIS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">GeoDA</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">ArcGIS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-semibold">HL7 FHIR</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Certifications Table Highlight -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-6 shadow-sm">
+                <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">Key Certifications & Training</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-slate-800 dark:text-slate-200">HL7 FHIR Fundamental Course</div>
+                            <div class="text-slate-500">HL7 International</div>
+                        </div>
+                        <span class="text-[10px] font-semibold text-sky-600">July 2025</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-slate-800 dark:text-slate-200">SNOMED CT FOUNDATION Course</div>
+                            <div class="text-slate-500">SNOMED International</div>
+                        </div>
+                        <span class="text-[10px] font-semibold text-sky-600">Aug 2020</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-slate-800 dark:text-slate-200">Data Analyst & Scientist with R</div>
+                            <div class="text-slate-500">DataCamp Career Tracks</div>
+                        </div>
+                        <span class="text-[10px] font-semibold text-sky-600">2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service & Memberships Section -->
+    <section id="service" class="py-16 border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">Academic Contributions</h2>
+                <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Service & Professional Activities</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Peer Review & Committees -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square text-sky-600 dark:text-sky-400"></i> Peer Review & Committees
+                    </h4>
+                    <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-sky-600 font-bold">•</span>
+                            <span><strong>ICBO 2026 / 2025:</strong> Organizing & Program Committee Member</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-sky-600 font-bold">•</span>
+                            <span><strong>AMIA Conference & Symposium:</strong> Reviewer (2021-Present)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-sky-600 font-bold">•</span>
+                            <span><strong>MedInfo 2025:</strong> Reviewer (20th World Congress)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-sky-600 font-bold">•</span>
+                            <span><strong>SCPHKK-IRB:</strong> Institutional Review Board Reviewer</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Professional Memberships -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-id-card text-sky-600 dark:text-sky-400"></i> Active Memberships
+                    </h4>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 rounded-lg font-medium text-slate-800 dark:text-slate-200">Sigma Xi (Full Member)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 rounded-lg font-medium text-slate-800 dark:text-slate-200">AMIA Member</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 rounded-lg font-medium text-slate-800 dark:text-slate-200">AeHIN Network</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 rounded-lg font-medium text-slate-800 dark:text-slate-200">ISB (Biocuration)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 rounded-lg font-medium text-slate-800 dark:text-slate-200">The Cochrane Collaboration</span>
+                    </div>
+                </div>
+
+                <!-- Volunteer Translation -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-language text-sky-600 dark:text-sky-400"></i> Cochrane Volunteer
+                    </h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Pro-bono English-to-Thai translator for Cochrane Library systematically synthesized reviews covering digital health, telemedicine, mHealth interventions, and chronic disease management.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Pages Setup Modal -->
+    <div id="githubModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-xl w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-2xl space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-github text-2xl text-slate-900 dark:text-white"></i>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Deploy to GitHub Pages</h3>
+                </div>
+                <button onclick="toggleModal('githubModal')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                <p>Follow these quick steps to host your portfolio online for free on GitHub Pages:</p>
+                
+                <ol class="list-decimal list-inside space-y-3 font-medium">
+                    <li class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                        <strong>Create a new GitHub Repository:</strong> Name it <code>username.github.io</code> or <code>portfolio</code> on GitHub.
+                    </li>
+                    <li class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                        <strong>Save this code:</strong> Save this single generated code file as <code>index.html</code> in your root repository folder.
+                    </li>
+                    <li class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-lg">
+                        <strong>Enable GitHub Pages:</strong> Go to <em>Settings -> Pages</em>, select the <code>main</code> or <code>master</code> branch and root <code>/</code>, then click Save!
+                    </li>
+                </ol>
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="toggleModal('githubModal')" class="px-4 py-2 bg-sky-600 text-white font-semibold text-xs rounded-lg hover:bg-sky-700">
+                    Got it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Dr. Anuwat Pengput. All rights reserved.
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#about" class="hover:text-sky-600">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+            themeIcon.className = 'fa-solid fa-sun';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+            }
+        });
+
+        // Mobile Nav Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Copy Helper
+        function copyToClipboard(text, msg) {
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            alert(msg || 'Copied to clipboard!');
+        }
+
+        // Modal Toggle Function
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+
+        // Publication Filtering
+        function filterPubs(category) {
+            const items = document.querySelectorAll('.pub-item');
+            const btns = document.querySelectorAll('.pub-tab-btn');
+
+            btns.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.className = 'pub-tab-btn px-4 py-2 rounded-lg bg-sky-600 text-white font-semibold transition-colors';
+                } else {
+                    btn.className = 'pub-tab-btn px-4 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors';
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Publication Live Search
+        const pubSearch = document.getElementById('pubSearch');
+        if (pubSearch) {
+            pubSearch.addEventListener('input', function(e) {
+                const term = e.target.value.toLowerCase();
+                const items = document.querySelectorAll('.pub-item');
+
+                items.forEach(item => {
+                    const text = item.innerText.toLowerCase();
+                    if (text.includes(term)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
